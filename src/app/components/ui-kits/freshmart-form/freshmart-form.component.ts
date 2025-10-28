@@ -1,4 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroShoppingCart } from '@ng-icons/heroicons/outline';
 import { UiButtonComponent } from '../../primitives/ui-button/ui-button.component';
 import { UiInputComponent } from '../../primitives/ui-input/ui-input.component';
 import { UiInputFloatingComponent } from '../../primitives/ui-input-floating/ui-input-floating.component';
@@ -9,11 +11,12 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
   selector: 'app-freshmart-form',
-  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent, UiComboboxComponent, UiComboboxFloatingComponent],
+  imports: [NgIcon, UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent, UiComboboxComponent, UiComboboxFloatingComponent],
+  providers: [provideIcons({ heroShoppingCart })],
   template: `
     <div class="freshmart-form" [style]="formStyles()">
       <div class="form-header">
-        <h3>🛒 Реєстрація в FreshMart</h3>
+        <h3><ng-icon name="heroShoppingCart" size="20" /> Реєстрація в FreshMart</h3>
         <p class="form-subtitle">Створіть акаунт та отримуйте бонуси</p>
       </div>
 
@@ -84,7 +87,7 @@ export class FreshmartFormComponent {
   formStyles = computed(() => {
     const tokens = this.tokens();
     return {
-      '--form-bg': tokens.colorBackground,
+      '--form-bg': tokens.formBackground,
       '--form-padding': tokens.padding,
       '--form-border-radius': tokens.borderRadius,
       '--form-shadow': tokens.shadowSize,

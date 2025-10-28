@@ -1,4 +1,6 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroBriefcase } from '@ng-icons/heroicons/outline';
 import { UiButtonComponent } from '../../primitives/ui-button/ui-button.component';
 import { UiInputComponent } from '../../primitives/ui-input/ui-input.component';
 import { UiInputFloatingComponent } from '../../primitives/ui-input-floating/ui-input-floating.component';
@@ -7,11 +9,12 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
   selector: 'app-adminhub-form',
-  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent],
+  imports: [NgIcon, UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent],
+  providers: [provideIcons({ heroBriefcase })],
   template: `
     <div class="adminhub-form" [style]="formStyles()">
       <div class="form-header">
-        <h3>💼 AdminHub</h3>
+        <h3><ng-icon name="heroBriefcase" size="20" /> ADMINHUB</h3>
         <p class="form-subtitle">Безпечний доступ для адміністраторів</p>
       </div>
 
@@ -76,7 +79,7 @@ export class AdminhubFormComponent {
   formStyles = computed(() => {
     const tokens = this.tokens();
     return {
-      '--form-bg': tokens.colorBackground,
+      '--form-bg': tokens.formBackground,
       '--form-padding': tokens.padding,
       '--form-border-radius': tokens.borderRadius,
       '--form-shadow': tokens.shadowSize,

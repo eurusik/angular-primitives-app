@@ -1,13 +1,15 @@
-import { Component, effect, signal, computed } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { NgpTabset, NgpTabList, NgpTabButton, NgpTabPanel } from 'ng-primitives/tabs';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroShoppingCart, heroTruck, heroBriefcase, heroBolt } from '@ng-icons/heroicons/outline';
 import { FreshmartFormComponent } from '../ui-kits/freshmart-form/freshmart-form.component';
 import { QuickdeliveryFormComponent } from '../ui-kits/quickdelivery-form/quickdelivery-form.component';
+import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.component';
 import { HeadlessComparisonComponent } from '../comparison/headless-comparison/headless-comparison.component';
 import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens-panel.component';
 import { PrimitivesUsedComponent, PrimitiveInfo } from '../primitives/primitives-used/primitives-used.component';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
-import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.component';
 
 @Component({
   selector: 'app-tabs-demo',
@@ -16,6 +18,7 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
     NgpTabList,
     NgpTabButton,
     NgpTabPanel,
+    NgIcon,
     FreshmartFormComponent,
     QuickdeliveryFormComponent,
     AdminhubFormComponent,
@@ -37,28 +40,28 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
                 ngpTabButton 
                 ngpTabButtonValue="freshmart"
                 class="tab-button">
-                <span class="tab-icon">🛒</span>
+                <ng-icon name="heroShoppingCart" class="tab-icon" />
                 <span class="tab-text">FreshMart</span>
               </button>
               <button 
                 ngpTabButton 
                 ngpTabButtonValue="quickdelivery"
                 class="tab-button">
-                <span class="tab-icon">🚂</span>
+                <ng-icon name="heroTruck" class="tab-icon" />
                 <span class="tab-text">QuickDelivery</span>
               </button>
               <button 
                 ngpTabButton 
                 ngpTabButtonValue="adminhub"
                 class="tab-button">
-                <span class="tab-icon">💼</span>
+                <ng-icon name="heroBriefcase" class="tab-icon" />
                 <span class="tab-text">AdminHub</span>
               </button>
               <button 
                 ngpTabButton 
                 ngpTabButtonValue="comparison"
                 class="tab-button">
-                <span class="tab-icon">⚡</span>
+                <ng-icon name="heroBolt" class="tab-icon" />
                 <span class="tab-text">Headless</span>
               </button>
             </div>
@@ -123,6 +126,7 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
     </div>
   `,
   styleUrl: './tabs-demo.component.css',
+  providers: [provideIcons({ heroShoppingCart, heroTruck, heroBriefcase, heroBolt })],
 })
 export class TabsDemoComponent {
   activeTab: UIKitType = 'freshmart';

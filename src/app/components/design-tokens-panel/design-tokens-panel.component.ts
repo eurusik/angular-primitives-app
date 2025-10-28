@@ -1,12 +1,15 @@
 import { Component, computed, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgpDialog, NgpDialogOverlay, NgpDialogTitle, NgpDialogTrigger } from 'ng-primitives/dialog';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroDocumentText, heroArrowPath } from '@ng-icons/heroicons/outline';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
 
 @Component({
   selector: 'app-design-tokens-panel',
-  imports: [FormsModule, NgpDialog, NgpDialogOverlay, NgpDialogTitle, NgpDialogTrigger],
+  imports: [FormsModule, NgpDialog, NgpDialogOverlay, NgpDialogTitle, NgpDialogTrigger, NgIcon],
+  providers: [provideIcons({ heroDocumentText, heroArrowPath })],
   template: `
     <aside class="tokens-panel">
       <div class="panel-header">
@@ -20,7 +23,7 @@ import { UIKitType } from '../../models/design-tokens.interface';
           [(ngModel)]="selectedKit"
           (ngModelChange)="onKitChange()">
           <option value="freshmart">🛒 FreshMart</option>
-          <option value="quickdelivery">🚂 QuickDelivery</option>
+          <option value="quickdelivery">🚚 QuickDelivery</option>
           <option value="adminhub">💼 AdminHub</option>
         </select>
       </div>
@@ -50,6 +53,19 @@ import { UIKitType } from '../../models/design-tokens.interface';
             class="color-input"
             [value]="currentTokens().colorSecondary"
             (input)="updateToken('colorSecondary', $any($event.target).value)">
+        </div>
+
+        <!-- Form Background -->
+        <div class="control-group">
+          <label class="control-label">
+            <span class="label-text">Form Background</span>
+            <span class="label-value">{{ currentTokens().formBackground }}</span>
+          </label>
+          <input 
+            type="color" 
+            class="color-input"
+            [value]="currentTokens().formBackground"
+            (input)="updateToken('formBackground', $any($event.target).value)">
         </div>
 
         <!-- Border Radius -->
@@ -164,12 +180,14 @@ import { UIKitType } from '../../models/design-tokens.interface';
           <button 
             [ngpDialogTrigger]="jsonDialog"
             class="action-btn view-json-btn">
-            📋 View JSON
+            <ng-icon name="heroDocumentText" size="18" />
+            View JSON
           </button>
           <button 
             class="action-btn reset-btn"
             (click)="resetTokens()">
-            🔄 Reset
+            <ng-icon name="heroArrowPath" size="18" />
+            Reset
           </button>
         </div>
       </div>

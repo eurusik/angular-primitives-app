@@ -7,6 +7,7 @@ export interface DesignTokens {
   colorBackground: string;
   colorText: string;
   colorBorder: string;
+  formBackground: string;
   borderRadius: string;
   padding: string;
   spacing: string;
@@ -33,6 +34,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     colorBackground: '#FFFFFF',
     colorText: '#1A1A1A',
     colorBorder: '#FDB071',
+    formBackground: '#FFF9F0',
     borderRadius: '24px',
     padding: '16px',
     spacing: '24px',
@@ -49,6 +51,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     colorBackground: '#FFEFF2',
     colorText: '#212529',
     colorBorder: '#FE8094',
+    formBackground: '#FFF5F7',
     borderRadius: '4px',
     padding: '12px',
     spacing: '16px',
@@ -65,6 +68,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     colorBackground: '#D6DDF5',
     colorText: '#1A1A1A',
     colorBorder: '#859ADD',
+    formBackground: '#E8ECFA',
     borderRadius: '12px',
     padding: '14px',
     spacing: '20px',
