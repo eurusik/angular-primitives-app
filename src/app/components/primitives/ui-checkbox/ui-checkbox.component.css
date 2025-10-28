@@ -1,71 +1,59 @@
-.ui-checkbox-container {
+.checkbox-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  user-select: none;
-  margin-bottom: var(--checkbox-spacing);
-}
-
-.ui-checkbox-input {
-  display: flex;
+  gap: 8px;
   cursor: pointer;
 }
 
-.ui-checkbox-box {
+[ngpCheckbox] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: var(--checkbox-size);
   height: var(--checkbox-size);
+  cursor: pointer;
   border: var(--checkbox-border-width) solid var(--checkbox-border-color);
   border-radius: var(--checkbox-border-radius);
   background: var(--checkbox-bg);
   transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  padding: 0;
+  outline: none;
+  flex: none;
+  color: var(--checkbox-checkmark-color);
 }
 
-.ui-checkbox-box::after {
-  content: '';
-  display: none;
-  width: 6px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+[ngpCheckbox][data-hover]:not([data-disabled]) {
+  border-color: var(--checkbox-hover-color);
+  background-color: color-mix(in srgb, var(--checkbox-checked-bg) 10%, transparent);
 }
 
-.ui-checkbox-input[data-checked] .ui-checkbox-box {
+[ngpCheckbox][data-checked] {
   background: var(--checkbox-checked-bg);
   border-color: var(--checkbox-checked-bg);
 }
 
-.ui-checkbox-input[data-checked] .ui-checkbox-box::after {
-  display: block;
-}
-
-.ui-checkbox-input[data-focus-visible] .ui-checkbox-box {
-  outline: 3px solid var(--checkbox-checked-bg);
+[ngpCheckbox][data-focus-visible] {
+  outline: 2px solid var(--checkbox-checked-bg);
   outline-offset: 2px;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--checkbox-checked-bg) 20%, transparent);
 }
 
-.ui-checkbox-input[data-hover]:not([data-disabled]) .ui-checkbox-box {
-  border-color: var(--checkbox-hover-color);
-}
-
-.ui-checkbox-input[data-disabled] .ui-checkbox-box {
+[ngpCheckbox][data-disabled] {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.ui-checkbox-input[data-disabled] ~ .ui-checkbox-label {
-  opacity: 0.5;
-  cursor: not-allowed;
+[ngpCheckbox] svg {
+  width: 60%;
+  height: 60%;
 }
 
-.ui-checkbox-label {
+.checkbox-label {
   font-size: var(--checkbox-font-size);
   color: var(--checkbox-text-color);
   font-weight: var(--checkbox-font-weight);
+}
+
+[ngpCheckbox][data-disabled] ~ .checkbox-label {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

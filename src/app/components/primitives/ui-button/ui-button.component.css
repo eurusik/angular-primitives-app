@@ -1,44 +1,44 @@
-.ui-button {
+[ngpButton] {
   padding: var(--btn-padding);
-  border-radius: var(--btn-border-radius);
   font-size: var(--btn-font-size);
   font-weight: var(--btn-font-weight);
-  border: var(--btn-border-width) solid var(--btn-border-color);
+  border-radius: var(--btn-border-radius);
+  border: none;
   background: var(--btn-bg);
   color: var(--btn-color);
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: var(--btn-shadow);
   font-family: inherit;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.ui-button:hover:not(:disabled) {
+[ngpButton][data-hover]:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   filter: brightness(1.1);
 }
 
-.ui-button[data-press]:not(:disabled) {
+[ngpButton][data-press]:not(:disabled) {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.ui-button[data-focus-visible] {
+[ngpButton][data-focus-visible] {
   outline: 3px solid var(--btn-border-color);
   outline-offset: 2px;
 }
 
-.ui-button:disabled {
+[ngpButton]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.ui-button--outline {
+[ngpButton].outline {
   background: transparent;
   border: var(--btn-border-width) solid var(--btn-border-color);
 }
 
-.ui-button--outline:hover:not(:disabled) {
+[ngpButton].outline[data-hover]:not(:disabled) {
   background: var(--btn-border-color);
   color: #FFFFFF;
 }

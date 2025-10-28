@@ -5,13 +5,13 @@
   box-shadow: var(--form-shadow);
   max-width: 480px;
   margin: 0 auto;
-  border-left: 4px solid var(--form-primary);
+  border: 2px solid var(--form-primary);
 }
 
 .form-header {
   margin-bottom: var(--form-spacing);
   padding-bottom: 16px;
-  border-bottom: 2px solid var(--form-secondary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .code-link {

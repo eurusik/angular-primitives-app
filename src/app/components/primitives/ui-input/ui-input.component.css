@@ -1,18 +1,18 @@
-.ui-input-field {
+[ngpFormField] {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: var(--input-spacing);
 }
 
-.ui-input-label {
+[ngpLabel] {
   font-size: var(--input-font-size);
   font-weight: var(--input-font-weight);
   color: var(--input-text-color);
   margin-bottom: 4px;
 }
 
-.ui-input {
+[ngpInput] {
   padding: var(--input-padding);
   border-radius: var(--input-border-radius);
   border: var(--input-border-width) solid var(--input-border-color);
@@ -26,26 +26,26 @@
   box-sizing: border-box;
 }
 
-.ui-input:hover:not(:disabled) {
+[ngpInput]:hover:not(:disabled) {
   border-color: var(--input-focus-color);
 }
 
-.ui-input:focus {
+[ngpInput]:focus {
   outline: none;
   border-color: var(--input-focus-color);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--input-focus-color) 15%, transparent);
 }
 
-.ui-input:disabled {
+[ngpInput]:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   background: #f5f5f5;
 }
 
-.ui-input::placeholder {
+[ngpInput]::placeholder {
   color: #999;
 }
 
-.ui-input[data-autofill] {
+[ngpInput][data-autofill] {
   background: #fff9e6;
 }
