@@ -1,11 +1,12 @@
-import { Component, computed, effect } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgpDialog, NgpDialogOverlay, NgpDialogTitle, NgpDialogTrigger } from 'ng-primitives/dialog';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
 
 @Component({
   selector: 'app-design-tokens-panel',
-  imports: [FormsModule],
+  imports: [FormsModule, NgpDialog, NgpDialogOverlay, NgpDialogTitle, NgpDialogTrigger],
   template: `
     <aside class="tokens-panel">
       <div class="panel-header">
@@ -158,19 +159,45 @@ import { UIKitType } from '../../models/design-tokens.interface';
           </select>
         </div>
 
-        <!-- Reset Button -->
-        <button 
-          class="reset-btn"
-          (click)="resetTokens()">
-          🔄 Reset to Default
-        </button>
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button 
+            [ngpDialogTrigger]="jsonDialog"
+            class="action-btn view-json-btn">
+            📋 View JSON
+          </button>
+          <button 
+            class="action-btn reset-btn"
+            (click)="resetTokens()">
+            🔄 Reset
+          </button>
+        </div>
       </div>
     </aside>
+
+    <!-- JSON Dialog Template -->
+    <ng-template #jsonDialog let-close="close">
+      <div ngpDialogOverlay>
+        <div ngpDialog class="dialog-content">
+          <h3 ngpDialogTitle class="dialog-title">Design Tokens JSON</h3>
+          <pre class="json-display">{{ tokensJSON() }}</pre>
+          <div class="dialog-footer">
+            <button class="copy-btn" (click)="copyJSON()">
+              {{ copyButtonText() }}
+            </button>
+            <button class="close-btn" (click)="close()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   `,
   styleUrl: './design-tokens-panel.component.css',
 })
 export class DesignTokensPanelComponent {
   selectedKit: UIKitType = 'freshmart';
+  copyButtonText = signal('Copy to Clipboard');
 
   constructor(private tokensService: DesignTokensService) {
     // Sync with service changes
@@ -184,6 +211,10 @@ export class DesignTokensPanelComponent {
 
   currentTokens = computed(() => {
     return this.tokensService.getTokens(this.tokensService.getSelectedKit()())();
+  });
+
+  tokensJSON = computed(() => {
+    return JSON.stringify(this.currentTokens(), null, 2);
   });
 
   onKitChange(): void {
@@ -200,6 +231,14 @@ export class DesignTokensPanelComponent {
 
   resetTokens(): void {
     this.tokensService.resetTokens(this.tokensService.getSelectedKit()());
+  }
+
+  copyJSON(): void {
+    navigator.clipboard.writeText(this.tokensJSON());
+    this.copyButtonText.set('✓ Copied!');
+    setTimeout(() => {
+      this.copyButtonText.set('Copy to Clipboard');
+    }, 2000);
   }
 
   parseNumber(value: string): number {
