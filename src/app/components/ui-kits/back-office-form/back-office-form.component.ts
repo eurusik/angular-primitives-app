@@ -12,29 +12,29 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
     <div class="backoffice-form" [style]="formStyles()">
       <div class="form-header">
         <h3>💼 Адмін панель</h3>
-        <p class="form-subtitle">Secure Admin Access</p>
+        <p class="form-subtitle">Доступ для адміністраторів</p>
       </div>
 
       <div class="form-body">
         @if (tokens().inputStyle === 'floating') {
           <app-ui-input-floating 
-            label="Username" 
+            label="Ім'я користувача" 
             placeholder=" "
             [tokens]="tokens()" />
           
           <app-ui-input-floating 
-            label="Password" 
+            label="Пароль" 
             type="password"
             placeholder=" "
             [tokens]="tokens()" />
         } @else {
           <app-ui-input 
-            label="Username" 
-            placeholder="Enter your username"
+            label="Ім'я користувача" 
+            placeholder="Введіть ім'я користувача"
             [tokens]="tokens()" />
           
           <app-ui-input 
-            label="Password" 
+            label="Пароль" 
             type="password"
             placeholder="••••••••"
             [tokens]="tokens()" />
