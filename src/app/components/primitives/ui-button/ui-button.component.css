@@ -2,11 +2,11 @@
   padding: var(--btn-padding);
   border-radius: var(--btn-border-radius);
   font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
   border: var(--btn-border-width) solid var(--btn-border-color);
   background: var(--btn-bg);
   color: var(--btn-color);
   cursor: pointer;
-  font-weight: 600;
   transition: all 0.2s ease;
   box-shadow: var(--btn-shadow);
   font-family: inherit;

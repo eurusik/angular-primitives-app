@@ -29,6 +29,7 @@ export class UiButtonComponent {
       '--btn-padding': tokens.padding,
       '--btn-border-radius': tokens.borderRadius,
       '--btn-font-size': tokens.fontSize,
+      '--btn-font-weight': tokens.fontWeight,
       '--btn-border-width': tokens.borderWidth,
       '--btn-shadow': tokens.shadowSize,
     };

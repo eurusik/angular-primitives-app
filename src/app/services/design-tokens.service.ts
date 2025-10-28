@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, Signal } from '@angular/core';
+import { Injectable, signal, computed, Signal, effect } from '@angular/core';
 import { DesignTokens, UIKitType, DEFAULT_TOKENS } from '../models/design-tokens.interface';
 
 @Injectable({
@@ -12,6 +12,40 @@ export class DesignTokensService {
 
   // Currently selected UI Kit
   private readonly selectedKit = signal<UIKitType>('silpo');
+
+  constructor() {
+    // Update global CSS variables when selected kit or tokens change
+    effect(() => {
+      const kit = this.selectedKit();
+      const tokens = this.getTokens(kit)();
+      this.updateGlobalCSSVariables(tokens);
+    });
+
+    // Watch for token updates
+    effect(() => {
+      this.silpoTokens();
+      this.lokoTokens();
+      this.backofficeTokens();
+      const kit = this.selectedKit();
+      const tokens = this.getTokens(kit)();
+      this.updateGlobalCSSVariables(tokens);
+    });
+  }
+
+  private updateGlobalCSSVariables(tokens: DesignTokens): void {
+    const root = document.documentElement;
+    root.style.setProperty('--combobox-bg', tokens.colorBackground);
+    root.style.setProperty('--combobox-border-color', tokens.colorPrimary);
+    root.style.setProperty('--combobox-border-width', tokens.borderWidth);
+    root.style.setProperty('--combobox-border-radius', tokens.borderRadius);
+    root.style.setProperty('--combobox-text-color', tokens.colorText);
+    root.style.setProperty('--combobox-focus-color', tokens.colorPrimary);
+    root.style.setProperty('--combobox-hover-color', tokens.colorSecondary);
+    root.style.setProperty('--combobox-font-size', tokens.fontSize);
+    root.style.setProperty('--combobox-font-weight', tokens.fontWeight);
+    root.style.setProperty('--combobox-padding', tokens.padding);
+    root.style.setProperty('--combobox-spacing', tokens.spacing);
+  }
 
   /**
    * Get tokens for a specific UI Kit

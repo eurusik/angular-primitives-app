@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, signal, computed } from '@angular/core';
 import { NgpTabset, NgpTabList, NgpTabButton, NgpTabPanel } from 'ng-primitives/tabs';
 import { SilpoFormComponent } from '../ui-kits/silpo-form/silpo-form.component';
 import { LokoFormComponent } from '../ui-kits/loko-form/loko-form.component';
@@ -20,7 +20,7 @@ import { UIKitType } from '../../models/design-tokens.interface';
     DesignTokensPanelComponent,
   ],
   template: `
-    <div class="demo-container">
+    <div class="demo-container" [style.background]="backgroundGradient()">
       <div class="demo-header">
         <h1>🎨 Angular Primitives Demo</h1>
         <p class="header-subtitle">
@@ -97,6 +97,11 @@ export class TabsDemoComponent {
       }
     });
   }
+
+  backgroundGradient = computed(() => {
+    const currentKit = this.tokensService.getSelectedKit()();
+    return this.tokensService.getTokens(currentKit)().backgroundGradient;
+  });
 
   onTabChange(tab: string | undefined): void {
     if (tab && (tab === 'silpo' || tab === 'loko' || tab === 'backoffice')) {

@@ -5,18 +5,18 @@
   box-shadow: var(--form-shadow);
   max-width: 450px;
   margin: 0 auto;
-  border: 2px solid var(--form-secondary);
+  border: 2px solid var(--form-primary);
 }
 
 .form-header {
-  margin-bottom: 20px;
+  margin-bottom: var(--form-spacing);
 }
 
 .form-header h3 {
   margin: 0 0 6px 0;
   font-size: 22px;
   color: var(--form-primary);
-  font-weight: 700;
+  font-weight: var(--form-font-weight);
   letter-spacing: -0.5px;
 }
 
@@ -24,15 +24,15 @@
   margin: 0;
   color: var(--form-secondary);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: var(--form-font-weight);
 }
 
 .form-body {
-  margin-bottom: 20px;
+  margin-bottom: var(--form-spacing);
 }
 
 .form-footer {
-  margin-bottom: 16px;
+  margin-bottom: var(--form-spacing);
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -45,7 +45,7 @@
 .form-extra {
   text-align: center;
   padding-top: 12px;
-  border-top: 1px solid #DEE2E6;
+  border-top: 1px solid var(--form-secondary);
 }
 
 .link {

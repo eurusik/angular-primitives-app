@@ -1,13 +1,15 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { UiButtonComponent } from '../../primitives/ui-button/ui-button.component';
 import { UiInputComponent } from '../../primitives/ui-input/ui-input.component';
 import { UiInputFloatingComponent } from '../../primitives/ui-input-floating/ui-input-floating.component';
 import { UiCheckboxComponent } from '../../primitives/ui-checkbox/ui-checkbox.component';
+import { UiComboboxComponent } from '../../primitives/ui-combobox/ui-combobox.component';
+import { UiComboboxFloatingComponent } from '../../primitives/ui-combobox-floating/ui-combobox-floating.component';
 import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
   selector: 'app-silpo-form',
-  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent],
+  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent, UiComboboxComponent, UiComboboxFloatingComponent],
   template: `
     <div class="silpo-form" [style]="formStyles()">
       <div class="form-header">
@@ -27,6 +29,11 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
             type="email"
             placeholder=" "
             [tokens]="tokens()" />
+          
+          <app-ui-combobox-floating
+            label="Місто доставки"
+            [options]="cities"
+            [tokens]="tokens()" />
         } @else {
           <app-ui-input 
             label="Ім'я" 
@@ -37,6 +44,12 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
             label="Email" 
             type="email"
             placeholder="example@email.com"
+            [tokens]="tokens()" />
+          
+          <app-ui-combobox
+            label="Місто доставки"
+            placeholder="Оберіть місто"
+            [options]="cities"
             [tokens]="tokens()" />
         }
         
@@ -65,6 +78,8 @@ export class SilpoFormComponent {
   constructor(private tokensService: DesignTokensService) {}
 
   tokens = computed(() => this.tokensService.getTokens('silpo')());
+  
+  cities = ['Київ', 'Львів', 'Одеса', 'Харків', 'Дніпро', 'Запоріжжя'];
 
   formStyles = computed(() => {
     const tokens = this.tokens();
@@ -75,6 +90,8 @@ export class SilpoFormComponent {
       '--form-shadow': tokens.shadowSize,
       '--form-primary': tokens.colorPrimary,
       '--form-secondary': tokens.colorSecondary,
+      '--form-font-weight': tokens.fontWeight,
+      '--form-spacing': tokens.spacing,
     };
   });
 }

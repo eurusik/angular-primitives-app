@@ -83,6 +83,8 @@ export class BackOfficeFormComponent {
       '--form-text': tokens.colorText,
       '--form-primary': tokens.colorPrimary,
       '--form-secondary': tokens.colorSecondary,
+      '--form-font-weight': tokens.fontWeight,
+      '--form-spacing': tokens.spacing,
     };
   });
 }

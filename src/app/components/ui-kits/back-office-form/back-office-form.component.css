@@ -9,7 +9,7 @@
 }
 
 .form-header {
-  margin-bottom: 24px;
+  margin-bottom: var(--form-spacing);
   padding-bottom: 16px;
   border-bottom: 2px solid var(--form-secondary);
 }
@@ -18,7 +18,7 @@
   margin: 0 0 6px 0;
   font-size: 20px;
   color: var(--form-primary);
-  font-weight: 700;
+  font-weight: var(--form-font-weight);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -27,20 +27,20 @@
   margin: 0;
   color: var(--form-secondary);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--form-font-weight);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .form-body {
-  margin-bottom: 24px;
+  margin-bottom: var(--form-spacing);
 }
 
 .form-footer {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: var(--form-spacing);
 }
 
 .form-footer app-ui-button {
@@ -52,14 +52,14 @@
   align-items: center;
   gap: 8px;
   padding: 12px;
-  background: #FFF9E6;
+  background: color-mix(in srgb, var(--form-secondary) 10%, transparent);
   border-radius: 6px;
-  border-left: 3px solid #F39C12;
+  border-left: 3px solid var(--form-secondary);
   font-size: 13px;
   color: var(--form-text);
 }
 
 .form-notice svg {
   flex-shrink: 0;
-  color: #F39C12;
+  color: var(--form-secondary);
 }

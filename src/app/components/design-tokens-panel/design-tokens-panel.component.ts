@@ -112,6 +112,38 @@ import { UIKitType } from '../../models/design-tokens.interface';
             (input)="updateToken('borderWidth', $any($event.target).value + 'px')">
         </div>
 
+        <!-- Spacing -->
+        <div class="control-group">
+          <label class="control-label">
+            <span class="label-text">Spacing</span>
+            <span class="label-value">{{ currentTokens().spacing }}</span>
+          </label>
+          <input 
+            type="range" 
+            class="range-input"
+            min="8" 
+            max="32" 
+            [value]="parseNumber(currentTokens().spacing)"
+            (input)="updateToken('spacing', $any($event.target).value + 'px')">
+        </div>
+
+        <!-- Font Weight -->
+        <div class="control-group">
+          <label class="control-label">
+            <span class="label-text">Font Weight</span>
+            <span class="label-value">{{ currentTokens().fontWeight }}</span>
+          </label>
+          <select 
+            class="select-input"
+            [value]="currentTokens().fontWeight"
+            (change)="updateToken('fontWeight', $any($event.target).value)">
+            <option value="400">Regular (400)</option>
+            <option value="500">Medium (500)</option>
+            <option value="600">Semibold (600)</option>
+            <option value="700">Bold (700)</option>
+          </select>
+        </div>
+
         <!-- Input Style -->
         <div class="control-group">
           <label class="control-label">

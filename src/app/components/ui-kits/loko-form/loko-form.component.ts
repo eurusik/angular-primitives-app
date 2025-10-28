@@ -69,6 +69,8 @@ export class LokoFormComponent {
       '--form-shadow': tokens.shadowSize,
       '--form-primary': tokens.colorPrimary,
       '--form-secondary': tokens.colorSecondary,
+      '--form-font-weight': tokens.fontWeight,
+      '--form-spacing': tokens.spacing,
     };
   });
 }

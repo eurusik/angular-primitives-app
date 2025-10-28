@@ -31,12 +31,14 @@ export class UiCheckboxComponent {
       '--checkbox-size': '20px',
       '--checkbox-border-radius': `calc(${tokens.borderRadius} / 2)`,
       '--checkbox-border-width': tokens.borderWidth,
-      '--checkbox-border-color': tokens.colorBorder,
+      '--checkbox-border-color': tokens.colorPrimary,
       '--checkbox-bg': tokens.colorBackground,
       '--checkbox-checked-bg': tokens.colorPrimary,
       '--checkbox-hover-color': tokens.colorSecondary,
       '--checkbox-text-color': tokens.colorText,
       '--checkbox-font-size': tokens.fontSize,
+      '--checkbox-font-weight': tokens.fontWeight,
+      '--checkbox-spacing': tokens.spacing,
     };
   });
 }

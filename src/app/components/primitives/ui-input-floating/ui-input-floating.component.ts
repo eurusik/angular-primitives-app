@@ -56,6 +56,12 @@ export class UiInputFloatingComponent {
     return {
       '--input-padding': tokens.padding,
       '--input-font-size': tokens.fontSize,
+      '--input-font-weight': tokens.fontWeight,
+      '--input-border-color': tokens.colorPrimary,
+      '--input-bg': tokens.colorBackground,
+      '--input-focus-color': tokens.colorPrimary,
+      '--input-border-radius': tokens.borderRadius,
+      '--input-border-width': tokens.borderWidth,
     };
   });
 
@@ -64,7 +70,7 @@ export class UiInputFloatingComponent {
     return {
       '--input-border-radius': tokens.borderRadius,
       '--input-border-width': tokens.borderWidth,
-      '--input-border-color': tokens.colorBorder,
+      '--input-border-color': tokens.colorPrimary,
       '--input-bg': tokens.colorBackground,
       '--input-text-color': tokens.colorText,
       '--input-focus-color': tokens.colorPrimary,
