@@ -9,12 +9,6 @@
   display: block;
 }
 
-.ui-combobox-button-floating-wrapper:focus-within {
-  outline: 2px solid var(--combobox-focus-color);
-  outline-offset: 2px;
-  border-radius: var(--combobox-border-radius);
-}
-
 .ui-combobox-button-floating {
   display: flex;
   justify-content: space-between;

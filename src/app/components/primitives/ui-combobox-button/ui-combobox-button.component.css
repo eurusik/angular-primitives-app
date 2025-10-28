@@ -16,12 +16,6 @@
   width: 100%;
 }
 
-.ui-combobox-button-wrapper:focus-within {
-  outline: 2px solid var(--combobox-focus-color);
-  outline-offset: 2px;
-  border-radius: var(--combobox-border-radius);
-}
-
 .ui-combobox-button {
   display: flex;
   justify-content: space-between;
