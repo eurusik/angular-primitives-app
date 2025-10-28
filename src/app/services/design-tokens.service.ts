@@ -6,12 +6,12 @@ import { DesignTokens, UIKitType, DEFAULT_TOKENS } from '../models/design-tokens
 })
 export class DesignTokensService {
   // Signals for each UI Kit's tokens
-  private readonly silpoTokens = signal<DesignTokens>({ ...DEFAULT_TOKENS.silpo });
-  private readonly lokoTokens = signal<DesignTokens>({ ...DEFAULT_TOKENS.loko });
-  private readonly backofficeTokens = signal<DesignTokens>({ ...DEFAULT_TOKENS.backoffice });
+  private readonly freshmartTokens = signal<DesignTokens>({ ...DEFAULT_TOKENS.freshmart });
+  private readonly quickdeliveryTokens = signal<DesignTokens>({ ...DEFAULT_TOKENS.quickdelivery });
+  private readonly adminhubTokens = signal<DesignTokens>({ ...DEFAULT_TOKENS.adminhub });
 
   // Currently selected UI Kit
-  private readonly selectedKit = signal<UIKitType>('silpo');
+  private readonly selectedKit = signal<UIKitType>('freshmart');
 
   constructor() {
     // Update global CSS variables when selected kit or tokens change
@@ -23,9 +23,9 @@ export class DesignTokensService {
 
     // Watch for token updates
     effect(() => {
-      this.silpoTokens();
-      this.lokoTokens();
-      this.backofficeTokens();
+      this.freshmartTokens();
+      this.quickdeliveryTokens();
+      this.adminhubTokens();
       const kit = this.selectedKit();
       const tokens = this.getTokens(kit)();
       this.updateGlobalCSSVariables(tokens);
@@ -52,12 +52,12 @@ export class DesignTokensService {
    */
   getTokens(kit: UIKitType): Signal<DesignTokens> {
     switch (kit) {
-      case 'silpo':
-        return this.silpoTokens.asReadonly();
-      case 'loko':
-        return this.lokoTokens.asReadonly();
-      case 'backoffice':
-        return this.backofficeTokens.asReadonly();
+      case 'freshmart':
+        return this.freshmartTokens.asReadonly();
+      case 'quickdelivery':
+        return this.quickdeliveryTokens.asReadonly();
+      case 'adminhub':
+        return this.adminhubTokens.asReadonly();
     }
   }
 
@@ -82,12 +82,12 @@ export class DesignTokensService {
     return computed(() => {
       const kit = this.selectedKit();
       switch (kit) {
-        case 'silpo':
-          return this.silpoTokens();
-        case 'loko':
-          return this.lokoTokens();
-        case 'backoffice':
-          return this.backofficeTokens();
+        case 'freshmart':
+          return this.freshmartTokens();
+        case 'quickdelivery':
+          return this.quickdeliveryTokens();
+        case 'adminhub':
+          return this.adminhubTokens();
       }
     });
   }
@@ -97,14 +97,14 @@ export class DesignTokensService {
    */
   updateToken(kit: UIKitType, key: keyof DesignTokens, value: string): void {
     switch (kit) {
-      case 'silpo':
-        this.silpoTokens.update(tokens => ({ ...tokens, [key]: value }));
+      case 'freshmart':
+        this.freshmartTokens.update(tokens => ({ ...tokens, [key]: value }));
         break;
-      case 'loko':
-        this.lokoTokens.update(tokens => ({ ...tokens, [key]: value }));
+      case 'quickdelivery':
+        this.quickdeliveryTokens.update(tokens => ({ ...tokens, [key]: value }));
         break;
-      case 'backoffice':
-        this.backofficeTokens.update(tokens => ({ ...tokens, [key]: value }));
+      case 'adminhub':
+        this.adminhubTokens.update(tokens => ({ ...tokens, [key]: value }));
         break;
     }
   }
@@ -114,14 +114,14 @@ export class DesignTokensService {
    */
   updateTokens(kit: UIKitType, tokens: Partial<DesignTokens>): void {
     switch (kit) {
-      case 'silpo':
-        this.silpoTokens.update(current => ({ ...current, ...tokens }));
+      case 'freshmart':
+        this.freshmartTokens.update(current => ({ ...current, ...tokens }));
         break;
-      case 'loko':
-        this.lokoTokens.update(current => ({ ...current, ...tokens }));
+      case 'quickdelivery':
+        this.quickdeliveryTokens.update(current => ({ ...current, ...tokens }));
         break;
-      case 'backoffice':
-        this.backofficeTokens.update(current => ({ ...current, ...tokens }));
+      case 'adminhub':
+        this.adminhubTokens.update(current => ({ ...current, ...tokens }));
         break;
     }
   }
@@ -131,14 +131,14 @@ export class DesignTokensService {
    */
   resetTokens(kit: UIKitType): void {
     switch (kit) {
-      case 'silpo':
-        this.silpoTokens.set({ ...DEFAULT_TOKENS.silpo });
+      case 'freshmart':
+        this.freshmartTokens.set({ ...DEFAULT_TOKENS.freshmart });
         break;
-      case 'loko':
-        this.lokoTokens.set({ ...DEFAULT_TOKENS.loko });
+      case 'quickdelivery':
+        this.quickdeliveryTokens.set({ ...DEFAULT_TOKENS.quickdelivery });
         break;
-      case 'backoffice':
-        this.backofficeTokens.set({ ...DEFAULT_TOKENS.backoffice });
+      case 'adminhub':
+        this.adminhubTokens.set({ ...DEFAULT_TOKENS.adminhub });
         break;
     }
   }
@@ -147,9 +147,9 @@ export class DesignTokensService {
    * Reset all tokens to defaults
    */
   resetAllTokens(): void {
-    this.silpoTokens.set({ ...DEFAULT_TOKENS.silpo });
-    this.lokoTokens.set({ ...DEFAULT_TOKENS.loko });
-    this.backofficeTokens.set({ ...DEFAULT_TOKENS.backoffice });
+    this.freshmartTokens.set({ ...DEFAULT_TOKENS.freshmart });
+    this.quickdeliveryTokens.set({ ...DEFAULT_TOKENS.quickdelivery });
+    this.adminhubTokens.set({ ...DEFAULT_TOKENS.adminhub });
   }
 
   /**

@@ -21,13 +21,13 @@ export interface DesignTokens {
 /**
  * UI Kit types
  */
-export type UIKitType = 'silpo' | 'loko' | 'backoffice';
+export type UIKitType = 'freshmart' | 'quickdelivery' | 'adminhub';
 
 /**
  * Default design tokens for each UI Kit
  */
 export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
-  silpo: {
+  freshmart: {
     colorPrimary: '#FE8522',
     colorSecondary: '#F08227',
     colorBackground: '#FFFFFF',
@@ -43,7 +43,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     inputStyle: 'standard',
     backgroundGradient: 'linear-gradient(135deg, #FFB366 0%, #FF9933 50%, #FF8000 100%)',
   },
-  loko: {
+  quickdelivery: {
     colorPrimary: '#FF3C64',
     colorSecondary: '#E72645',
     colorBackground: '#FFEFF2',
@@ -59,7 +59,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     inputStyle: 'standard',
     backgroundGradient: 'linear-gradient(135deg, #FF8FAB 0%, #FF6B90 50%, #FF4775 100%)',
   },
-  backoffice: {
+  adminhub: {
     colorPrimary: '#2358D1',
     colorSecondary: '#2D4EB6',
     colorBackground: '#D6DDF5',

@@ -1,12 +1,12 @@
 import { Component, effect, signal, computed } from '@angular/core';
 import { NgpTabset, NgpTabList, NgpTabButton, NgpTabPanel } from 'ng-primitives/tabs';
-import { SilpoFormComponent } from '../ui-kits/silpo-form/silpo-form.component';
-import { LokoFormComponent } from '../ui-kits/loko-form/loko-form.component';
-import { BackOfficeFormComponent } from '../ui-kits/back-office-form/back-office-form.component';
+import { FreshmartFormComponent } from '../ui-kits/freshmart-form/freshmart-form.component';
+import { QuickdeliveryFormComponent } from '../ui-kits/quickdelivery-form/quickdelivery-form.component';
 import { HeadlessComparisonComponent } from '../comparison/headless-comparison/headless-comparison.component';
 import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens-panel.component';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
+import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.component';
 
 @Component({
   selector: 'app-tabs-demo',
@@ -15,9 +15,9 @@ import { UIKitType } from '../../models/design-tokens.interface';
     NgpTabList,
     NgpTabButton,
     NgpTabPanel,
-    SilpoFormComponent,
-    LokoFormComponent,
-    BackOfficeFormComponent,
+    FreshmartFormComponent,
+    QuickdeliveryFormComponent,
+    AdminhubFormComponent,
     HeadlessComparisonComponent,
     DesignTokensPanelComponent,
   ],
@@ -33,24 +33,24 @@ import { UIKitType } from '../../models/design-tokens.interface';
             <div ngpTabList class="tab-list">
               <button 
                 ngpTabButton 
-                ngpTabButtonValue="silpo"
+                ngpTabButtonValue="freshmart"
                 class="tab-button">
                 <span class="tab-icon">🛒</span>
-                <span class="tab-text">Сільпо</span>
+                <span class="tab-text">FreshMart</span>
               </button>
               <button 
                 ngpTabButton 
-                ngpTabButtonValue="loko"
+                ngpTabButtonValue="quickdelivery"
                 class="tab-button">
                 <span class="tab-icon">🚂</span>
-                <span class="tab-text">Локо</span>
+                <span class="tab-text">QuickDelivery</span>
               </button>
               <button 
                 ngpTabButton 
-                ngpTabButtonValue="backoffice"
+                ngpTabButtonValue="adminhub"
                 class="tab-button">
                 <span class="tab-icon">💼</span>
-                <span class="tab-text">Бек Офіс</span>
+                <span class="tab-text">AdminHub</span>
               </button>
               <button 
                 ngpTabButton 
@@ -62,14 +62,14 @@ import { UIKitType } from '../../models/design-tokens.interface';
             </div>
 
             <div class="tab-panels">
-              <div ngpTabPanel ngpTabPanelValue="silpo" class="tab-panel">
-                <app-silpo-form />
+              <div ngpTabPanel ngpTabPanelValue="freshmart" class="tab-panel">
+                <app-freshmart-form />
               </div>
-              <div ngpTabPanel ngpTabPanelValue="loko" class="tab-panel">
-                <app-loko-form />
+              <div ngpTabPanel ngpTabPanelValue="quickdelivery" class="tab-panel">
+                <app-quickdelivery-form />
               </div>
-              <div ngpTabPanel ngpTabPanelValue="backoffice" class="tab-panel">
-                <app-back-office-form />
+              <div ngpTabPanel ngpTabPanelValue="adminhub" class="tab-panel">
+                <app-adminhub-form />
               </div>
               <div ngpTabPanel ngpTabPanelValue="comparison" class="tab-panel">
                 <app-headless-comparison />
@@ -95,7 +95,7 @@ import { UIKitType } from '../../models/design-tokens.interface';
   styleUrl: './tabs-demo.component.css',
 })
 export class TabsDemoComponent {
-  activeTab: UIKitType = 'silpo';
+  activeTab: UIKitType = 'freshmart';
 
   constructor(private tokensService: DesignTokensService) {
     // Sync tokens panel changes to tab
@@ -113,7 +113,7 @@ export class TabsDemoComponent {
   });
 
   onTabChange(tab: string | undefined): void {
-    if (tab && (tab === 'silpo' || tab === 'loko' || tab === 'backoffice')) {
+    if (tab && (tab === 'freshmart' || tab === 'quickdelivery' || tab === 'adminhub')) {
       this.activeTab = tab as UIKitType;
       this.tokensService.setSelectedKit(tab as UIKitType);
     }

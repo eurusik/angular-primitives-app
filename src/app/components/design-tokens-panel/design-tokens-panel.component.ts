@@ -18,9 +18,9 @@ import { UIKitType } from '../../models/design-tokens.interface';
           class="selector-dropdown"
           [(ngModel)]="selectedKit"
           (ngModelChange)="onKitChange()">
-          <option value="silpo">🛒 Сільпо</option>
-          <option value="loko">🚂 Локо</option>
-          <option value="backoffice">💼 Бек Офіс</option>
+          <option value="freshmart">🛒 FreshMart</option>
+          <option value="quickdelivery">🚂 QuickDelivery</option>
+          <option value="adminhub">💼 AdminHub</option>
         </select>
       </div>
 
@@ -170,7 +170,7 @@ import { UIKitType } from '../../models/design-tokens.interface';
   styleUrl: './design-tokens-panel.component.css',
 })
 export class DesignTokensPanelComponent {
-  selectedKit: UIKitType = 'silpo';
+  selectedKit: UIKitType = 'freshmart';
 
   constructor(private tokensService: DesignTokensService) {
     // Sync with service changes

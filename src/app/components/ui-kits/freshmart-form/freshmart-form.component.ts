@@ -8,12 +8,12 @@ import { UiComboboxFloatingComponent } from '../../primitives/ui-combobox-floati
 import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
-  selector: 'app-silpo-form',
+  selector: 'app-freshmart-form',
   imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent, UiComboboxComponent, UiComboboxFloatingComponent],
   template: `
-    <div class="silpo-form" [style]="formStyles()">
+    <div class="freshmart-form" [style]="formStyles()">
       <div class="form-header">
-        <h3>🛒 Реєстрація в Сільпо</h3>
+        <h3>🛒 Реєстрація в FreshMart</h3>
         <p class="form-subtitle">Створіть акаунт та отримуйте бонуси</p>
       </div>
 
@@ -72,12 +72,12 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
       </div>
     </div>
   `,
-  styleUrl: './silpo-form.component.css',
+  styleUrl: './freshmart-form.component.css',
 })
-export class SilpoFormComponent {
+export class FreshmartFormComponent {
   constructor(private tokensService: DesignTokensService) {}
 
-  tokens = computed(() => this.tokensService.getTokens('silpo')());
+  tokens = computed(() => this.tokensService.getTokens('freshmart')());
   
   cities = ['Київ', 'Львів', 'Одеса', 'Харків', 'Дніпро', 'Запоріжжя'];
 

@@ -139,7 +139,7 @@ handleTouch() {{'{'}}{{'}'}}
 export class HeadlessComparisonComponent {
   constructor(private tokensService: DesignTokensService) {}
 
-  tokens = computed(() => this.tokensService.getTokens('silpo')());
+  tokens = computed(() => this.tokensService.getTokens('freshmart')());
   
   cities = ['Київ', 'Львів', 'Одеса', 'Харків', 'Дніпро', 'Запоріжжя'];
 }
