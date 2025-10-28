@@ -1,12 +1,13 @@
 import { Component, computed } from '@angular/core';
 import { UiButtonComponent } from '../../primitives/ui-button/ui-button.component';
 import { UiInputComponent } from '../../primitives/ui-input/ui-input.component';
+import { UiInputFloatingComponent } from '../../primitives/ui-input-floating/ui-input-floating.component';
 import { UiCheckboxComponent } from '../../primitives/ui-checkbox/ui-checkbox.component';
 import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
   selector: 'app-back-office-form',
-  imports: [UiButtonComponent, UiInputComponent, UiCheckboxComponent],
+  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent],
   template: `
     <div class="backoffice-form" [style]="formStyles()">
       <div class="form-header">
@@ -15,16 +16,29 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
       </div>
 
       <div class="form-body">
-        <app-ui-input 
-          label="Username" 
-          placeholder="Enter your username"
-          [tokens]="tokens()" />
-        
-        <app-ui-input 
-          label="Password" 
-          type="password"
-          placeholder="••••••••"
-          [tokens]="tokens()" />
+        @if (tokens().inputStyle === 'floating') {
+          <app-ui-input-floating 
+            label="Username" 
+            placeholder=" "
+            [tokens]="tokens()" />
+          
+          <app-ui-input-floating 
+            label="Password" 
+            type="password"
+            placeholder=" "
+            [tokens]="tokens()" />
+        } @else {
+          <app-ui-input 
+            label="Username" 
+            placeholder="Enter your username"
+            [tokens]="tokens()" />
+          
+          <app-ui-input 
+            label="Password" 
+            type="password"
+            placeholder="••••••••"
+            [tokens]="tokens()" />
+        }
         
         <app-ui-checkbox 
           label="Увімкнути двофакторну автентифікацію"
@@ -67,6 +81,8 @@ export class BackOfficeFormComponent {
       '--form-border-radius': tokens.borderRadius,
       '--form-shadow': tokens.shadowSize,
       '--form-text': tokens.colorText,
+      '--form-primary': tokens.colorPrimary,
+      '--form-secondary': tokens.colorSecondary,
     };
   });
 }

@@ -12,6 +12,7 @@ export interface DesignTokens {
   fontSize: string;
   borderWidth: string;
   shadowSize: string;
+  inputStyle: 'standard' | 'floating';
 }
 
 /**
@@ -34,6 +35,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     fontSize: '16px',
     borderWidth: '2px',
     shadowSize: '0 4px 12px rgba(254, 133, 34, 0.15)',
+    inputStyle: 'standard',
   },
   loko: {
     colorPrimary: '#FF3C64',
@@ -46,6 +48,7 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     fontSize: '14px',
     borderWidth: '1px',
     shadowSize: '0 2px 8px rgba(255, 60, 100, 0.1)',
+    inputStyle: 'standard',
   },
   backoffice: {
     colorPrimary: '#2358D1',
@@ -58,5 +61,6 @@ export const DEFAULT_TOKENS: Record<UIKitType, DesignTokens> = {
     fontSize: '15px',
     borderWidth: '1px',
     shadowSize: '0 3px 10px rgba(35, 88, 209, 0.12)',
+    inputStyle: 'standard',
   },
 };

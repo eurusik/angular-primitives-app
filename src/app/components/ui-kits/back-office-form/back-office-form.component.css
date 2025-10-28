@@ -5,19 +5,19 @@
   box-shadow: var(--form-shadow);
   max-width: 480px;
   margin: 0 auto;
-  border-left: 4px solid #2358D1;
+  border-left: 4px solid var(--form-primary);
 }
 
 .form-header {
   margin-bottom: 24px;
   padding-bottom: 16px;
-  border-bottom: 2px solid #859ADD;
+  border-bottom: 2px solid var(--form-secondary);
 }
 
 .form-header h3 {
   margin: 0 0 6px 0;
   font-size: 20px;
-  color: #2358D1;
+  color: var(--form-primary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -25,7 +25,7 @@
 
 .form-subtitle {
   margin: 0;
-  color: #7F8C8D;
+  color: var(--form-secondary);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -38,12 +38,13 @@
 
 .form-footer {
   display: flex;
+  justify-content: space-between;
   gap: 12px;
   margin-bottom: 20px;
 }
 
 .form-footer app-ui-button {
-  flex: 1;
+  flex: 0 0 auto;
 }
 
 .form-notice {

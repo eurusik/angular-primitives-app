@@ -150,6 +150,28 @@
   transform: scale(1.1);
 }
 
+.select-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #FAFAFA;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-input:hover {
+  border-color: #999;
+}
+
+.select-input:focus {
+  outline: none;
+  border-color: #666;
+  background: #FFFFFF;
+}
+
 .reset-btn {
   width: 100%;
   padding: 14px;

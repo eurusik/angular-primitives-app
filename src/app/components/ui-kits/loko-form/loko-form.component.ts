@@ -1,12 +1,13 @@
 import { Component, computed } from '@angular/core';
 import { UiButtonComponent } from '../../primitives/ui-button/ui-button.component';
 import { UiInputComponent } from '../../primitives/ui-input/ui-input.component';
+import { UiInputFloatingComponent } from '../../primitives/ui-input-floating/ui-input-floating.component';
 import { UiCheckboxComponent } from '../../primitives/ui-checkbox/ui-checkbox.component';
 import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
   selector: 'app-loko-form',
-  imports: [UiButtonComponent, UiInputComponent, UiCheckboxComponent],
+  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent],
   template: `
     <div class="loko-form" [style]="formStyles()">
       <div class="form-header">
@@ -15,11 +16,19 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
       </div>
 
       <div class="form-body">
-        <app-ui-input 
-          label="Номер телефону" 
-          type="tel"
-          placeholder="+380 XX XXX XX XX"
-          [tokens]="tokens()" />
+        @if (tokens().inputStyle === 'floating') {
+          <app-ui-input-floating 
+            label="Номер телефону" 
+            type="tel"
+            placeholder=" "
+            [tokens]="tokens()" />
+        } @else {
+          <app-ui-input 
+            label="Номер телефону" 
+            type="tel"
+            placeholder="+380 XX XXX XX XX"
+            [tokens]="tokens()" />
+        }
         
         <app-ui-checkbox 
           label="Запам'ятати мене на цьому пристрої"
@@ -31,6 +40,11 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
           variant="primary"
           [tokens]="tokens()">
           Увійти
+        </app-ui-button>
+        <app-ui-button 
+          variant="secondary"
+          [tokens]="tokens()">
+          Реєстрація
         </app-ui-button>
       </div>
 
@@ -54,6 +68,7 @@ export class LokoFormComponent {
       '--form-border-radius': tokens.borderRadius,
       '--form-shadow': tokens.shadowSize,
       '--form-primary': tokens.colorPrimary,
+      '--form-secondary': tokens.colorSecondary,
     };
   });
 }

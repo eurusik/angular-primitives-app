@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { NgpTabset, NgpTabList, NgpTabButton, NgpTabPanel } from 'ng-primitives/tabs';
 import { SilpoFormComponent } from '../ui-kits/silpo-form/silpo-form.component';
 import { LokoFormComponent } from '../ui-kits/loko-form/loko-form.component';
 import { BackOfficeFormComponent } from '../ui-kits/back-office-form/back-office-form.component';
 import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens-panel.component';
+import { DesignTokensService } from '../../services/design-tokens.service';
+import { UIKitType } from '../../models/design-tokens.interface';
 
 @Component({
   selector: 'app-tabs-demo',
@@ -28,7 +30,7 @@ import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens
 
       <div class="demo-content">
         <div class="tabs-section">
-          <div ngpTabset class="tabset">
+          <div ngpTabset [(ngpTabsetValue)]="activeTab" (ngpTabsetValueChange)="onTabChange($event)" class="tabset">
             <div ngpTabList class="tab-list">
               <button 
                 ngpTabButton 
@@ -83,4 +85,23 @@ import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens
   `,
   styleUrl: './tabs-demo.component.css',
 })
-export class TabsDemoComponent {}
+export class TabsDemoComponent {
+  activeTab: UIKitType = 'silpo';
+
+  constructor(private tokensService: DesignTokensService) {
+    // Sync tokens panel changes to tab
+    effect(() => {
+      const selectedKit = this.tokensService.getSelectedKit()();
+      if (this.activeTab !== selectedKit) {
+        this.activeTab = selectedKit;
+      }
+    });
+  }
+
+  onTabChange(tab: string | undefined): void {
+    if (tab && (tab === 'silpo' || tab === 'loko' || tab === 'backoffice')) {
+      this.activeTab = tab as UIKitType;
+      this.tokensService.setSelectedKit(tab as UIKitType);
+    }
+  }
+}

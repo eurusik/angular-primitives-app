@@ -51,7 +51,7 @@
 }
 
 .ui-checkbox-input[data-hover]:not([data-disabled]) .ui-checkbox-box {
-  border-color: var(--checkbox-checked-bg);
+  border-color: var(--checkbox-hover-color);
 }
 
 .ui-checkbox-input[data-disabled] .ui-checkbox-box {

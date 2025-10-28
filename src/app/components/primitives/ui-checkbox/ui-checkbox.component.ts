@@ -34,6 +34,7 @@ export class UiCheckboxComponent {
       '--checkbox-border-color': tokens.colorBorder,
       '--checkbox-bg': tokens.colorBackground,
       '--checkbox-checked-bg': tokens.colorPrimary,
+      '--checkbox-hover-color': tokens.colorSecondary,
       '--checkbox-text-color': tokens.colorText,
       '--checkbox-font-size': tokens.fontSize,
     };

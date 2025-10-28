@@ -1,6 +1,7 @@
 {
   "name": "angular-primitives-app",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,12 +23,14 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.2.10",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@floating-ui/dom": "^1.7.4",
     "ng-primitives": "^0.85.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

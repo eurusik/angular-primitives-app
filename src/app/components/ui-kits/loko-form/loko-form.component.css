@@ -5,7 +5,7 @@
   box-shadow: var(--form-shadow);
   max-width: 450px;
   margin: 0 auto;
-  border: 2px solid #FF3C64;
+  border: 2px solid var(--form-secondary);
 }
 
 .form-header {
@@ -15,14 +15,14 @@
 .form-header h3 {
   margin: 0 0 6px 0;
   font-size: 22px;
-  color: #FF3C64;
+  color: var(--form-primary);
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 
 .form-subtitle {
   margin: 0;
-  color: #666;
+  color: var(--form-secondary);
   font-size: 13px;
   font-weight: 500;
 }
@@ -33,10 +33,13 @@
 
 .form-footer {
   margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .form-footer app-ui-button {
-  width: 100%;
+  flex: 0 0 auto;
 }
 
 .form-extra {

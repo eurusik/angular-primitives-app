@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
@@ -112,6 +112,21 @@ import { UIKitType } from '../../models/design-tokens.interface';
             (input)="updateToken('borderWidth', $any($event.target).value + 'px')">
         </div>
 
+        <!-- Input Style -->
+        <div class="control-group">
+          <label class="control-label">
+            <span class="label-text">Input Style</span>
+            <span class="label-value">{{ currentTokens().inputStyle }}</span>
+          </label>
+          <select 
+            class="select-input"
+            [value]="currentTokens().inputStyle"
+            (change)="updateToken('inputStyle', $any($event.target).value)">
+            <option value="standard">Standard</option>
+            <option value="floating">Floating Label</option>
+          </select>
+        </div>
+
         <!-- Reset Button -->
         <button 
           class="reset-btn"
@@ -128,28 +143,36 @@ import { UIKitType } from '../../models/design-tokens.interface';
   styleUrl: './design-tokens-panel.component.css',
 })
 export class DesignTokensPanelComponent {
-  selectedKit = signal<UIKitType>('silpo');
+  selectedKit: UIKitType = 'silpo';
 
-  constructor(private tokensService: DesignTokensService) {}
+  constructor(private tokensService: DesignTokensService) {
+    // Sync with service changes
+    effect(() => {
+      const serviceKit = this.tokensService.getSelectedKit()();
+      if (this.selectedKit !== serviceKit) {
+        this.selectedKit = serviceKit;
+      }
+    });
+  }
 
   currentTokens = computed(() => {
-    return this.tokensService.getTokens(this.selectedKit())();
+    return this.tokensService.getTokens(this.tokensService.getSelectedKit()())();
   });
 
   onKitChange(): void {
-    this.tokensService.setSelectedKit(this.selectedKit());
+    this.tokensService.setSelectedKit(this.selectedKit);
   }
 
   updateToken(key: string, value: string): void {
     this.tokensService.updateToken(
-      this.selectedKit(),
+      this.tokensService.getSelectedKit()(),
       key as any,
       value
     );
   }
 
   resetTokens(): void {
-    this.tokensService.resetTokens(this.selectedKit());
+    this.tokensService.resetTokens(this.tokensService.getSelectedKit()());
   }
 
   parseNumber(value: string): number {
