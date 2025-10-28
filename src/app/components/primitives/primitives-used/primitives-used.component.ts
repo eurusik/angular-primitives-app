@@ -74,7 +74,6 @@ export interface PrimitiveInfo {
 
     .primitive-badge:hover {
       background: #667eea;
-      transform: translateY(-1px);
       box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
     }
 
