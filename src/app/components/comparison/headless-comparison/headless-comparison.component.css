@@ -249,6 +249,7 @@
 
 .code-block pre {
   margin: 0;
+  overflow-x: auto;
 }
 
 .code-block code {
@@ -259,8 +260,103 @@
 }
 
 @media (max-width: 1024px) {
+  .comparison-container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
   .comparison-grid,
   .code-grid {
     grid-template-columns: 1fr;
+  }
+
+  .comparison-title {
+    font-size: 2rem;
+  }
+
+  .comparison-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-container {
+    padding: 0.5rem;
+  }
+
+  .comparison-title {
+    font-size: 1.75rem;
+  }
+
+  .comparison-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .comparison-side {
+    padding: 1.5rem;
+  }
+
+  .side-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .side-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .savings-grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .saving-arrow {
+    transform: rotate(90deg);
+    font-size: 2rem;
+  }
+
+  .code-block {
+    padding: 1rem;
+  }
+
+  .code-block h4 {
+    font-size: 0.9rem;
+  }
+
+  .code-block pre {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-container {
+    padding: 0.25rem;
+  }
+
+  .comparison-title {
+    font-size: 1.5rem;
+  }
+
+  .comparison-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .comparison-side {
+    padding: 1rem;
+  }
+
+  .side-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .code-block {
+    padding: 0.75rem;
+  }
+
+  .code-block pre {
+    font-size: 0.7rem;
   }
 }

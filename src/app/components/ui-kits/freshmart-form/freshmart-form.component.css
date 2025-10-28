@@ -12,6 +12,25 @@
   text-align: center;
 }
 
+.code-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--form-primary);
+  text-decoration: none;
+  border: 1px solid var(--form-primary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.code-link:hover {
+  background: var(--form-primary);
+  color: white;
+}
+
 .form-header h3 {
   margin: 0 0 8px 0;
   font-size: 24px;

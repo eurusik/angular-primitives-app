@@ -4,6 +4,7 @@ import { FreshmartFormComponent } from '../ui-kits/freshmart-form/freshmart-form
 import { QuickdeliveryFormComponent } from '../ui-kits/quickdelivery-form/quickdelivery-form.component';
 import { HeadlessComparisonComponent } from '../comparison/headless-comparison/headless-comparison.component';
 import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens-panel.component';
+import { PrimitivesUsedComponent, PrimitiveInfo } from '../primitives/primitives-used/primitives-used.component';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
 import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.component';
@@ -20,6 +21,7 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
     AdminhubFormComponent,
     HeadlessComparisonComponent,
     DesignTokensPanelComponent,
+    PrimitivesUsedComponent,
   ],
   template: `
     <div class="demo-container" [style.background]="backgroundGradient()">
@@ -63,13 +65,40 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
 
             <div class="tab-panels">
               <div ngpTabPanel ngpTabPanelValue="freshmart" class="tab-panel">
-                <app-freshmart-form />
+                <div class="panel-layout">
+                  <div class="form-column">
+                    <app-freshmart-form />
+                  </div>
+                  <div class="info-column">
+                    <app-primitives-used 
+                      [primitives]="freshmartPrimitives"
+                      githubUrl="https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/ui-kits/freshmart-form" />
+                  </div>
+                </div>
               </div>
               <div ngpTabPanel ngpTabPanelValue="quickdelivery" class="tab-panel">
-                <app-quickdelivery-form />
+                <div class="panel-layout">
+                  <div class="form-column">
+                    <app-quickdelivery-form />
+                  </div>
+                  <div class="info-column">
+                    <app-primitives-used 
+                      [primitives]="quickdeliveryPrimitives"
+                      githubUrl="https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/ui-kits/quickdelivery-form" />
+                  </div>
+                </div>
               </div>
               <div ngpTabPanel ngpTabPanelValue="adminhub" class="tab-panel">
-                <app-adminhub-form />
+                <div class="panel-layout">
+                  <div class="form-column">
+                    <app-adminhub-form />
+                  </div>
+                  <div class="info-column">
+                    <app-primitives-used 
+                      [primitives]="adminhubPrimitives"
+                      githubUrl="https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/ui-kits/adminhub-form" />
+                  </div>
+                </div>
               </div>
               <div ngpTabPanel ngpTabPanelValue="comparison" class="tab-panel">
                 <app-headless-comparison />
@@ -97,6 +126,31 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
 })
 export class TabsDemoComponent {
   activeTab: UIKitType = 'freshmart';
+
+  freshmartPrimitives: PrimitiveInfo[] = [
+    { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
+    { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' },
+    { name: 'UiComboboxComponent', description: 'Combobox з пошуком', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox' },
+    { name: 'UiComboboxFloatingComponent', description: 'Combobox з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-floating' },
+    { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
+    { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
+  ];
+
+  quickdeliveryPrimitives: PrimitiveInfo[] = [
+    { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
+    { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' },
+    { name: 'UiComboboxButtonComponent', description: 'Button-only combobox', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-button' },
+    { name: 'UiComboboxButtonFloatingComponent', description: 'Button combobox з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-button-floating' },
+    { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
+    { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
+  ];
+
+  adminhubPrimitives: PrimitiveInfo[] = [
+    { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
+    { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' },
+    { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
+    { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
+  ];
 
   constructor(private tokensService: DesignTokensService) {
     // Sync tokens panel changes to tab
