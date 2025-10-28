@@ -1,46 +1,59 @@
-.ui-combobox-floating-field {
+.ui-combobox-button-floating-field {
   position: relative;
   margin-bottom: 32px;
   padding-top: 8px;
 }
 
-.ui-combobox-floating-container {
+.ui-combobox-button-floating-wrapper {
   position: relative;
+  display: block;
+}
+
+.ui-combobox-button-floating-wrapper:focus-within {
+  outline: 2px solid var(--combobox-focus-color);
+  outline-offset: 2px;
+  border-radius: var(--combobox-border-radius);
+}
+
+.ui-combobox-button-floating {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: var(--combobox-border-radius, 8px);
-  border: var(--combobox-border-width, 2px) solid var(--combobox-border-color, #ccc);
-  background: var(--combobox-bg, #fff);
-  box-sizing: border-box;
-}
-
-.ui-combobox-floating-container[data-focus-visible] {
-  outline: 2px solid var(--combobox-focus-color);
-  outline-offset: 2px;
-}
-
-.ui-combobox-floating-input {
-  flex: 1;
   width: 100%;
   padding: calc(var(--combobox-padding) * 1.2) var(--combobox-padding);
   padding-top: calc(var(--combobox-padding) * 1.5);
-  padding-right: 40px;
+  border-radius: var(--combobox-border-radius);
+  border: var(--combobox-border-width) solid var(--combobox-border-color);
+  background-color: var(--combobox-bg);
+  color: var(--combobox-border-color);
+  font-family: inherit;
   font-size: var(--combobox-font-size);
   font-weight: var(--combobox-font-weight);
-  border: none;
-  background: transparent;
-  color: var(--combobox-border-color);
-  outline: none;
-  transition: all 0.2s ease;
+  cursor: pointer;
   box-sizing: border-box;
+  transition: all 0.2s ease;
+  text-align: left;
 }
 
-.ui-combobox-floating-input:focus {
-  outline: none;
+.ui-combobox-button-floating:hover {
+  background-color: color-mix(in srgb, var(--combobox-hover-color) 10%, var(--combobox-bg));
 }
 
-.ui-combobox-floating-label {
+.ui-combobox-button-floating[aria-expanded='true'] {
+  background-color: color-mix(in srgb, var(--combobox-focus-color) 10%, var(--combobox-bg));
+  border-color: var(--combobox-focus-color);
+}
+
+.ui-combobox-button-floating-icon {
+  transition: transform 0.2s ease;
+  font-size: 12px;
+}
+
+.ui-combobox-button-floating[aria-expanded='true'] .ui-combobox-button-floating-icon {
+  transform: rotate(180deg);
+}
+
+.ui-combobox-button-floating-label {
   position: absolute;
   left: var(--combobox-padding);
   top: 50%;
@@ -53,33 +66,12 @@
   padding: 0 4px;
 }
 
-.ui-combobox-floating-label.floating {
+.ui-combobox-button-floating-label.floating {
   top: -18px;
   transform: translateY(-50%);
   font-size: calc(var(--combobox-font-size) * 0.75);
   color: var(--combobox-border-color);
   font-weight: 600;
-}
-
-.ui-combobox-floating-button {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
-  background-color: transparent;
-  border: none;
-  color: var(--combobox-text-color);
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.ui-combobox-floating-button:hover {
-  color: var(--combobox-focus-color);
 }
 
 [ngpComboboxDropdown] {
@@ -99,11 +91,11 @@
 }
 
 [ngpComboboxDropdown][data-enter] {
-  animation: combobox-show 0.1s ease-out;
+  animation: combobox-show 0.15s ease-out;
 }
 
 [ngpComboboxDropdown][data-exit] {
-  animation: combobox-hide 0.1s ease-out;
+  animation: combobox-hide 0.15s ease-in;
 }
 
 @keyframes combobox-show {
@@ -140,6 +132,7 @@
   font-size: var(--combobox-font-size, 14px);
   color: var(--combobox-text-color, #333);
   box-sizing: border-box;
+  transition: background-color 0.1s ease;
 }
 
 [ngpComboboxOption][data-hover] {
@@ -156,13 +149,7 @@
   font-weight: 600;
 }
 
-.ui-combobox-empty {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  color: var(--combobox-text-color, #999);
-  font-size: var(--combobox-font-size, 14px);
-  text-align: center;
-  opacity: 0.6;
+[ngpComboboxOption][data-selected] {
+  background-color: var(--combobox-focus-color);
+  color: var(--combobox-bg);
 }

@@ -3,11 +3,13 @@ import { UiButtonComponent } from '../../primitives/ui-button/ui-button.componen
 import { UiInputComponent } from '../../primitives/ui-input/ui-input.component';
 import { UiInputFloatingComponent } from '../../primitives/ui-input-floating/ui-input-floating.component';
 import { UiCheckboxComponent } from '../../primitives/ui-checkbox/ui-checkbox.component';
+import { UiComboboxButtonComponent } from '../../primitives/ui-combobox-button/ui-combobox-button.component';
+import { UiComboboxButtonFloatingComponent } from '../../primitives/ui-combobox-button-floating/ui-combobox-button-floating.component';
 import { DesignTokensService } from '../../../services/design-tokens.service';
 
 @Component({
   selector: 'app-loko-form',
-  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent],
+  imports: [UiButtonComponent, UiInputComponent, UiInputFloatingComponent, UiCheckboxComponent, UiComboboxButtonComponent, UiComboboxButtonFloatingComponent],
   template: `
     <div class="loko-form" [style]="formStyles()">
       <div class="form-header">
@@ -19,14 +21,24 @@ import { DesignTokensService } from '../../../services/design-tokens.service';
         @if (tokens().inputStyle === 'floating') {
           <app-ui-input-floating 
             label="Номер телефону" 
-            type="tel"
             placeholder=" "
+            [tokens]="tokens()" />
+          
+          <app-ui-combobox-button-floating
+            label="Час доставки"
+            [options]="deliveryTimes"
             [tokens]="tokens()" />
         } @else {
           <app-ui-input 
             label="Номер телефону" 
             type="tel"
             placeholder="+380 XX XXX XX XX"
+            [tokens]="tokens()" />
+          
+          <app-ui-combobox-button
+            label="Час доставки"
+            placeholder="Оберіть час"
+            [options]="deliveryTimes"
             [tokens]="tokens()" />
         }
         
@@ -59,6 +71,8 @@ export class LokoFormComponent {
   constructor(private tokensService: DesignTokensService) {}
 
   tokens = computed(() => this.tokensService.getTokens('loko')());
+  
+  deliveryTimes = ['Якнайшвидше', '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00'];
 
   formStyles = computed(() => {
     const tokens = this.tokens();
