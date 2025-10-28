@@ -1,0 +1,57 @@
+.loko-form {
+  background: var(--form-bg);
+  padding: calc(var(--form-padding) * 1.5);
+  border-radius: var(--form-border-radius);
+  box-shadow: var(--form-shadow);
+  max-width: 450px;
+  margin: 0 auto;
+  border: 2px solid #FF3C64;
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+.form-header h3 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  color: #FF3C64;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.form-subtitle {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-body {
+  margin-bottom: 20px;
+}
+
+.form-footer {
+  margin-bottom: 16px;
+}
+
+.form-footer app-ui-button {
+  width: 100%;
+}
+
+.form-extra {
+  text-align: center;
+  padding-top: 12px;
+  border-top: 1px solid #DEE2E6;
+}
+
+.link {
+  color: var(--form-primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

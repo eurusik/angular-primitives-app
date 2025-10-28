@@ -1,0 +1,44 @@
+.ui-button {
+  padding: var(--btn-padding);
+  border-radius: var(--btn-border-radius);
+  font-size: var(--btn-font-size);
+  border: var(--btn-border-width) solid var(--btn-border-color);
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: var(--btn-shadow);
+  font-family: inherit;
+}
+
+.ui-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  filter: brightness(1.1);
+}
+
+.ui-button[data-press]:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ui-button[data-focus-visible] {
+  outline: 3px solid var(--btn-border-color);
+  outline-offset: 2px;
+}
+
+.ui-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ui-button--outline {
+  background: transparent;
+  border: var(--btn-border-width) solid var(--btn-border-color);
+}
+
+.ui-button--outline:hover:not(:disabled) {
+  background: var(--btn-border-color);
+  color: #FFFFFF;
+}

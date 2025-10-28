@@ -1,0 +1,213 @@
+.demo-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.demo-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.demo-content {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.tabs-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.tabset {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tab-list {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #F5F5F5;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #666;
+  white-space: nowrap;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+.tab-button[data-active] {
+  background: white;
+  color: #1A1A1A;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button[data-focus-visible] {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+}
+
+.tab-text {
+  font-size: 0.95rem;
+}
+
+.tab-panels {
+  min-height: 400px;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-panel[data-active] {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tokens section - sticky positioning handled by the panel itself */
+
+.demo-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  color: white;
+  opacity: 0.9;
+}
+
+.demo-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.demo-footer a {
+  color: white;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.demo-footer a:hover {
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .demo-content {
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .demo-content {
+    grid-template-columns: 1fr;
+  }
+
+  .tokens-section {
+    order: -1;
+  }
+
+  .demo-container {
+    padding: 1.5rem;
+  }
+
+  .demo-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .demo-container {
+    padding: 1rem;
+  }
+
+  .demo-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header-subtitle {
+    font-size: 1rem;
+  }
+
+  .tabs-section {
+    padding: 1.5rem;
+  }
+
+  .tab-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  .tab-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-list {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+  }
+}

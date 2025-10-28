@@ -1,0 +1,40 @@
+.silpo-form {
+  background: var(--form-bg);
+  padding: calc(var(--form-padding) * 1.5);
+  border-radius: var(--form-border-radius);
+  box-shadow: var(--form-shadow);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  color: #FE8522;
+  font-weight: 700;
+}
+
+.form-subtitle {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.form-body {
+  margin-bottom: 24px;
+}
+
+.form-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.form-footer app-ui-button {
+  flex: 1;
+}
