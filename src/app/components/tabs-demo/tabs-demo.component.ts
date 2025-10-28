@@ -71,7 +71,7 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
                   </div>
                   <div class="info-column">
                     <app-primitives-used 
-                      [primitives]="freshmartPrimitives"
+                      [primitives]="freshmartPrimitives()"
                       githubUrl="https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/ui-kits/freshmart-form" />
                   </div>
                 </div>
@@ -83,7 +83,7 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
                   </div>
                   <div class="info-column">
                     <app-primitives-used 
-                      [primitives]="quickdeliveryPrimitives"
+                      [primitives]="quickdeliveryPrimitives()"
                       githubUrl="https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/ui-kits/quickdelivery-form" />
                   </div>
                 </div>
@@ -95,7 +95,7 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
                   </div>
                   <div class="info-column">
                     <app-primitives-used 
-                      [primitives]="adminhubPrimitives"
+                      [primitives]="adminhubPrimitives()"
                       githubUrl="https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/ui-kits/adminhub-form" />
                   </div>
                 </div>
@@ -127,30 +127,50 @@ import { AdminhubFormComponent } from '../ui-kits/adminhub-form/adminhub-form.co
 export class TabsDemoComponent {
   activeTab: UIKitType = 'freshmart';
 
-  freshmartPrimitives: PrimitiveInfo[] = [
-    { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
-    { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' },
-    { name: 'UiComboboxComponent', description: 'Combobox з пошуком', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox' },
-    { name: 'UiComboboxFloatingComponent', description: 'Combobox з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-floating' },
-    { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
-    { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
-  ];
+  freshmartPrimitives = computed(() => {
+    const tokens = this.tokensService.getTokens('freshmart')();
+    const isFloating = tokens.inputStyle === 'floating';
+    
+    return [
+      isFloating 
+        ? { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' }
+        : { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
+      isFloating
+        ? { name: 'UiComboboxFloatingComponent', description: 'Combobox з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-floating' }
+        : { name: 'UiComboboxComponent', description: 'Combobox з пошуком', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox' },
+      { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
+      { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
+    ];
+  });
 
-  quickdeliveryPrimitives: PrimitiveInfo[] = [
-    { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
-    { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' },
-    { name: 'UiComboboxButtonComponent', description: 'Button-only combobox', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-button' },
-    { name: 'UiComboboxButtonFloatingComponent', description: 'Button combobox з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-button-floating' },
-    { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
-    { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
-  ];
+  quickdeliveryPrimitives = computed(() => {
+    const tokens = this.tokensService.getTokens('quickdelivery')();
+    const isFloating = tokens.inputStyle === 'floating';
+    
+    return [
+      isFloating 
+        ? { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' }
+        : { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
+      isFloating
+        ? { name: 'UiComboboxButtonFloatingComponent', description: 'Button combobox з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-button-floating' }
+        : { name: 'UiComboboxButtonComponent', description: 'Button-only combobox', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-combobox-button' },
+      { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
+      { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
+    ];
+  });
 
-  adminhubPrimitives: PrimitiveInfo[] = [
-    { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
-    { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' },
-    { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
-    { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
-  ];
+  adminhubPrimitives = computed(() => {
+    const tokens = this.tokensService.getTokens('adminhub')();
+    const isFloating = tokens.inputStyle === 'floating';
+    
+    return [
+      isFloating 
+        ? { name: 'UiInputFloatingComponent', description: 'Input з floating label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input-floating' }
+        : { name: 'UiInputComponent', description: 'Базовий input з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-input' },
+      { name: 'UiCheckboxComponent', description: 'Checkbox з label', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-checkbox' },
+      { name: 'UiButtonComponent', description: 'Кнопка з варіантами стилів', path: 'https://github.com/eurusik/angular-primitives-app/tree/main/src/app/components/primitives/ui-button' },
+    ];
+  });
 
   constructor(private tokensService: DesignTokensService) {
     // Sync tokens panel changes to tab
