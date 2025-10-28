@@ -3,6 +3,7 @@ import { NgpTabset, NgpTabList, NgpTabButton, NgpTabPanel } from 'ng-primitives/
 import { SilpoFormComponent } from '../ui-kits/silpo-form/silpo-form.component';
 import { LokoFormComponent } from '../ui-kits/loko-form/loko-form.component';
 import { BackOfficeFormComponent } from '../ui-kits/back-office-form/back-office-form.component';
+import { HeadlessComparisonComponent } from '../comparison/headless-comparison/headless-comparison.component';
 import { DesignTokensPanelComponent } from '../design-tokens-panel/design-tokens-panel.component';
 import { DesignTokensService } from '../../services/design-tokens.service';
 import { UIKitType } from '../../models/design-tokens.interface';
@@ -17,15 +18,13 @@ import { UIKitType } from '../../models/design-tokens.interface';
     SilpoFormComponent,
     LokoFormComponent,
     BackOfficeFormComponent,
+    HeadlessComparisonComponent,
     DesignTokensPanelComponent,
   ],
   template: `
     <div class="demo-container" [style.background]="backgroundGradient()">
       <div class="demo-header">
-        <h1>🎨 Angular Primitives Demo</h1>
-        <p class="header-subtitle">
-          Headless UI components with real-time design token customization
-        </p>
+        <h1>Angular Primitives Demo</h1>
       </div>
 
       <div class="demo-content">
@@ -53,6 +52,13 @@ import { UIKitType } from '../../models/design-tokens.interface';
                 <span class="tab-icon">💼</span>
                 <span class="tab-text">Бек Офіс</span>
               </button>
+              <button 
+                ngpTabButton 
+                ngpTabButtonValue="comparison"
+                class="tab-button">
+                <span class="tab-icon">⚡</span>
+                <span class="tab-text">Headless</span>
+              </button>
             </div>
 
             <div class="tab-panels">
@@ -64,6 +70,9 @@ import { UIKitType } from '../../models/design-tokens.interface';
               </div>
               <div ngpTabPanel ngpTabPanelValue="backoffice" class="tab-panel">
                 <app-back-office-form />
+              </div>
+              <div ngpTabPanel ngpTabPanelValue="comparison" class="tab-panel">
+                <app-headless-comparison />
               </div>
             </div>
           </div>

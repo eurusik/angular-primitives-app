@@ -9,8 +9,7 @@ import { UIKitType } from '../../models/design-tokens.interface';
   template: `
     <aside class="tokens-panel">
       <div class="panel-header">
-        <h2>🎨 Design Tokens</h2>
-        <p class="panel-subtitle">Customize UI in real-time</p>
+        <h2>Design Tokens</h2>
       </div>
 
       <div class="kit-selector">
@@ -165,10 +164,6 @@ import { UIKitType } from '../../models/design-tokens.interface';
           (click)="resetTokens()">
           🔄 Reset to Default
         </button>
-      </div>
-
-      <div class="panel-footer">
-        <p class="footer-text">Changes apply instantly</p>
       </div>
     </aside>
   `,

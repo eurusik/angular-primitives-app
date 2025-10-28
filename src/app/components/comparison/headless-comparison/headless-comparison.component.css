@@ -1,0 +1,266 @@
+.comparison-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.comparison-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.comparison-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.comparison-side {
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-side.traditional {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  border: 3px solid #e17055;
+}
+
+.comparison-side.headless {
+  background: linear-gradient(135deg, #a8e6cf 0%, #81c784 100%);
+  border: 3px solid #4caf50;
+}
+
+.side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.side-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.badge {
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+.badge.warning {
+  background: #ff6b6b;
+  color: white;
+}
+
+.badge.success {
+  background: #51cf66;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.demo-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: #333;
+}
+
+.traditional-select {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.traditional-select:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+.limitations,
+.benefits {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.limitations h4,
+.benefits h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.limitations ul,
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.limitations li,
+.benefits li {
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.try-it {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+}
+
+.try-it-content h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.try-it-content p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.savings-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.saving-item {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.saving-item.highlight-saving {
+  background: rgba(255, 255, 255, 0.3);
+  border: 3px solid white;
+  transform: scale(1.1);
+}
+
+.saving-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.saving-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.saving-arrow {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.highlight {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid white;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.code-comparison {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.code-comparison h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.code-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.code-block {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.code-block h4 {
+  color: #61dafb;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.code-block pre {
+  margin: 0;
+}
+
+.code-block code {
+  color: #d4d4d4;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .comparison-grid,
+  .code-grid {
+    grid-template-columns: 1fr;
+  }
+}
