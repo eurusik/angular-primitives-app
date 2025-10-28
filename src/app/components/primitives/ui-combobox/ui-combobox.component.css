@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 48px;
+  padding: var(--combobox-padding, 12px);
   border-radius: var(--combobox-border-radius, 8px);
   border: var(--combobox-border-width, 2px) solid var(--combobox-border-color, #ccc);
   background: var(--combobox-bg, #fff);
